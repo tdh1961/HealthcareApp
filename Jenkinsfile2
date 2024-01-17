@@ -17,15 +17,15 @@ pipeline {
                 sh 'mvn clean test compile install package'
             }
         }
-        /*stage('upload artifact'){
+        stage('upload artifact'){
             steps{
                  
-                sh 'curl -uadmin:AP5mZ1TGxbfJg5s8o7m1rRSRP4i -T \
+                sh 'curl -uadmin:P2y1UiRRbNYAGwPGsz56ztnu46-T \
                 target/bio*.jar \
-                "http://52.23.253.203:8081/artifactory/geoapp/"'
+                "http://3.84.152.224:8081/artifactory/geoapp/"'
             }
         }
-        stage('image build'){
+        /*stage('image build'){
             steps{
                 sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 076892551558.dkr.ecr.us-east-1.amazonaws.com '
                 sh 'docker build -t geoapp .'
