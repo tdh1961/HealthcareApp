@@ -6,7 +6,10 @@ pipeline {
     stages{
         stage('sonarqube scan'){
             steps{
-                sh 'mvn sonar:sonar'
+                withSonarQubeEnv('sonarQube'){ 
+              sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=tdh1961_week16healthcareApp'
+             // sh 'mvn sonar:sonar'
+            }
             }
         }
         stage('all maven commands'){
@@ -14,6 +17,26 @@ pipeline {
                 sh 'mvn clean test compile install package'
             }
         }
-        
+        /*stage('upload artifact'){
+            steps{
+                 
+                sh 'curl -uadmin:AP5mZ1TGxbfJg5s8o7m1rRSRP4i -T \
+                target/bio*.jar \
+                "http://52.23.253.203:8081/artifactory/geoapp/"'
+            }
+        }
+        stage('image build'){
+            steps{
+                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 076892551558.dkr.ecr.us-east-1.amazonaws.com '
+                sh 'docker build -t geoapp .'
+            }
+        }
+        stage('push image'){
+            steps{
+                sh 'docker tag geoapp:latest 076892551558.dkr.ecr.us-east-1.amazonaws.com/geoapp:latest'
+                sh 'docker push 076892551558.dkr.ecr.us-east-1.amazonaws.com/geoapp:latest'
+            }
+        }
+    */    
     }
 }
