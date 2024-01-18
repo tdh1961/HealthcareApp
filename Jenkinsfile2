@@ -7,7 +7,7 @@ pipeline {
         stage('sonarqube scan'){
             steps{
                 withSonarQubeEnv('sonarserver'){ 
-              sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=kserge2001_week16-code'
+              sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=tdh1961_week16healthcareApp'
              // sh 'mvn sonar:sonar'
             }
             }
@@ -20,9 +20,9 @@ pipeline {
         stage('upload artifact'){
             steps{
                  
-                sh 'curl -uadmin:AP5mZ1TGxbfJg5s8o7m1rRSRP4i -T \
+                sh 'curl -uadmin:AP2y1UiRRbNYAGwPGsz56ztnu46 -T \
                 target/bio*.jar \
-                "http://52.23.253.203:8081/artifactory/geoapp/"'
+                "http://35.153.162.204:8081/artifactory/geoapp/"'
             }
         }
         stage('image build'){
