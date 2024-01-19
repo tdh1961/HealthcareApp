@@ -17,7 +17,7 @@ pipeline {
                 sh 'mvn clean test compile install package'
             }
         }
-        /*stage('upload artifact'){
+        stage('upload artifact'){
             steps{
                  
                 sh 'curl -uadmin:AP2y1UiRRbNYAGwPGsz56ztnu46 -T \
@@ -25,7 +25,7 @@ pipeline {
                 "http://34.235.145.112:8081/artifactory/geoapp/"'
             }
         }
-        stage('image build'){
+        /*stage('image build'){
             steps{
                 sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 076892551558.dkr.ecr.us-east-1.amazonaws.com '
                 sh 'docker build -t geoapp .'
