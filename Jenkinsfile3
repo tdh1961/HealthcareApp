@@ -1,21 +1,23 @@
 pipeline {
-    agent any
-    tools{
-        maven 'M2_HOME'
+    agent {
+        docker { image 'node:20.10.0-alpine3.19' }
     }
     stages{
-        stage ('sonarqube scan'){
+        stage('check current directory'){
             steps{
-                withSonarQubeEnv('sonarQube'){
-                sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=tdh1961_week16-healthCarePortail'
-                }       
-                }
-        }
-        stage ('all maven commands'){
-            steps{
-                sh 'mvn clean test compile install package'
+                sh 'pwd'
+               sh 'id'
+               sh "mkdir \$(date '+%Y%m%d_%H%M%S')"
+                sh 'npm --version'
             }
         }
-       
+        /*stage('python script'){
+            agent {docker { image 'python:3.10-slim' }}
+            steps{
+              sh 'python3 --version'  
+            }
+            */
+            
+        }
     }
 }
