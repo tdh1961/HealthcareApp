@@ -11,12 +11,12 @@ pipeline {
                 sh 'npm --version'
             }
         }
-        /*stage('python script'){
+        stage('python script'){
             agent {docker { image 'python:3.10-slim' }}
             steps{
               sh 'python3 --version'  
             }                      
         }
-        */
+        
     }
 }
