@@ -25,18 +25,18 @@ pipeline {
                 "http://34.235.145.112:8081/artifactory/geoapp/"'
             }
         }
-        /*stage('image build'){
+        stage('image build'){
             steps{
-                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 076892551558.dkr.ecr.us-east-1.amazonaws.com '
+                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 751794912847.dkr.ecr.us-east-1.amazonaws.com'
                 sh 'docker build -t geoapp .'
             }
         }
         stage('push image'){
             steps{
-                sh 'docker tag geoapp:latest 076892551558.dkr.ecr.us-east-1.amazonaws.com/geoapp:latest'
-                sh 'docker push 076892551558.dkr.ecr.us-east-1.amazonaws.com/geoapp:latest'
+                sh 'docker tag geoapp:latest 751794912847.dkr.ecr.us-east-1.amazonaws.com/geoapp:latest'
+                sh 'docker push 751794912847.dkr.ecr.us-east-1.amazonaws.com/geoapp:latest'
             }
         }
-        */
+        
     }
 }
