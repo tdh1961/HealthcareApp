@@ -5,6 +5,8 @@ pipeline {
     }
     stages{
         stage('sonarqube scan'){
+            agent {
+        docker { image 'node:20.11.1-alpine3.19' }
             steps{
                 withSonarQubeEnv('sonarQube'){ 
               sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=tdh1961_week16healthcareApp'
